@@ -1,0 +1,3 @@
+src/Boilerplate.vala
+src/BoilerplateWindow.vala
+data/interface/boilerplate_window.ui

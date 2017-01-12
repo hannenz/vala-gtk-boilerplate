@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-	<schema path="/de/hannenz/boilerfplate/" id="de.hannenz.boilerplate`jjj">
-		<key name="show-error-notifications" type="b">
-			<default>true</default>
-			<summary>Show notifications</summary>
-			<description>Show notifications</description>
+	<schema path="/de/hannenz/boilerplate/" id="de.hannenz.boilerplate">
+		<key name="foo" type="s">
+			<default>"bar"</default>
+			<summary>Dummy setting</summary>
+			<description>Just a dummy setting</description>
 		</key>
 	</schema>
 </schemalist>
