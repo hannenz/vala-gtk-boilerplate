@@ -48,9 +48,9 @@ namespace Boilerplate {
 			debug(_("Hello, world"));
 		}
 
-		protected override void startup() {
-			// set_app_menu here	
-		}
+		/* protected override void startup() { */
+		/* 	// set_app_menu here	 */
+		/* } */
 	}
 
 	public static int main(string[] args) {

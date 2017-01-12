@@ -66,7 +66,6 @@ BoilerplateBoilerplate* boilerplate_boilerplate_construct (GType object_type);
 static void boilerplate_boilerplate_real_activate (GApplication* base);
 BoilerplateBoilerplateApplicationWindow* boilerplate_boilerplate_application_window_new (void);
 BoilerplateBoilerplateApplicationWindow* boilerplate_boilerplate_application_window_construct (GType object_type);
-static void boilerplate_boilerplate_real_startup (GApplication* base);
 static void boilerplate_boilerplate_finalize (GObject* obj);
 gint boilerplate_main (gchar** args, int args_length1);
 
@@ -129,17 +128,10 @@ static void boilerplate_boilerplate_real_activate (GApplication* base) {
 }
 
 
-static void boilerplate_boilerplate_real_startup (GApplication* base) {
-	BoilerplateBoilerplate * self;
-	self = (BoilerplateBoilerplate*) base;
-}
-
-
 static void boilerplate_boilerplate_class_init (BoilerplateBoilerplateClass * klass) {
 	boilerplate_boilerplate_parent_class = g_type_class_peek_parent (klass);
 	g_type_class_add_private (klass, sizeof (BoilerplateBoilerplatePrivate));
 	((GApplicationClass *) klass)->activate = boilerplate_boilerplate_real_activate;
-	((GApplicationClass *) klass)->startup = boilerplate_boilerplate_real_startup;
 	G_OBJECT_CLASS (klass)->finalize = boilerplate_boilerplate_finalize;
 }
 
