@@ -34,21 +34,28 @@ set (VALA_PACKAGES ${VALA_PACKAGES} pango)
 set (VALA_PACKAGES ${VALA_PACKAGES} x11)
 
 set (APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Config.vala)
+set (APP_SOURCES ${APP_SOURCES} ApplicationWindow.vala)
 set (APP_SOURCES ${APP_SOURCES} Boilerplate.vala)
-set (APP_SOURCES ${APP_SOURCES} BoilerplateWindow.vala)
 
 
 if ((${CMAKE_BUILD_TYPE} STREQUAL "Debug") OR (${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebInfo"))
 	set(COMPILE_OPTIONS ${COMPILE_OPTIONS} "-g")
 endif()
 
+set (COMPILE_OPTIONS ${COMPILE_OPTIONS} --target-glib=2.48 )
+set (COMPILE_OPTIONS ${COMPILE_OPTIONS} --gresources=${CMAKE_SOURCE_DIR}/data/boilerplate.gresource.xml )
+
 vala_precompile(VALA_C boilerplate
 	${APP_SOURCES}
 PACKAGES
 	${VALA_PACKAGES}
+OPTIONS
+	${COMPILE_OPTIONS}
 )
 
+SET (VALA_C ${VALA_C} ${boilerplate_gresource_xml_C_FILE})
 add_executable(boilerplate ${VALA_C})
+add_dependencies (boilerplate boilerplate_gresource_xml)
 
 
 install(TARGETS

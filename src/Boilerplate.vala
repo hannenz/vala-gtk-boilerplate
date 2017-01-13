@@ -21,7 +21,7 @@ namespace Boilerplate {
 
 	public class Boilerplate : Gtk.Application {
 
-		private BoilerplateApplicationWindow window;
+		private ApplicationWindow window;
 		private GLib.Settings settings;
 	
 		public Boilerplate() {
@@ -39,7 +39,8 @@ namespace Boilerplate {
 
 		protected override void activate() {
 			settings = new GLib.Settings(application_id);
-			window = new BoilerplateApplicationWindow();
+			window = new ApplicationWindow(this);
+
 			window.show_all();
 			window.present();
 

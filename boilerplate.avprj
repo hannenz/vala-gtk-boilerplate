@@ -5,7 +5,9 @@ project_name: boilerplate
 
 *gresource: boilerplate_gresource_xml data/boilerplate.gresource.xml
 
-*vala_binary: src/boilerplate
+vala_binary: src/boilerplate
+compile_options: --target-glib=2.48
+use_gresource: boilerplate_gresource_xml
 *vala_check_package: atk
 *vala_check_package: cairo
 *vala_check_package: gdk-3.0
@@ -16,15 +18,15 @@ project_name: boilerplate
 *vala_check_package: gtk+-3.0
 *vala_check_package: pango
 *vala_check_package: x11
+*vala_source: ApplicationWindow.vala
 *vala_source: Boilerplate.vala
-*vala_source: BoilerplateWindow.vala
 
 
 *po: po
 
 *translate: glade data/interface/boilerplate_window.ui
+*translate: vala src/ApplicationWindow.vala
 *translate: vala src/Boilerplate.vala
-*translate: vala src/BoilerplateWindow.vala
 
 *data: data/local
 

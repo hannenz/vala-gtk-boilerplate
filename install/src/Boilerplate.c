@@ -23,15 +23,15 @@ typedef struct _BoilerplateBoilerplate BoilerplateBoilerplate;
 typedef struct _BoilerplateBoilerplateClass BoilerplateBoilerplateClass;
 typedef struct _BoilerplateBoilerplatePrivate BoilerplateBoilerplatePrivate;
 
-#define BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW (boilerplate_boilerplate_application_window_get_type ())
-#define BOILERPLATE_BOILERPLATE_APPLICATION_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW, BoilerplateBoilerplateApplicationWindow))
-#define BOILERPLATE_BOILERPLATE_APPLICATION_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW, BoilerplateBoilerplateApplicationWindowClass))
-#define BOILERPLATE_IS_BOILERPLATE_APPLICATION_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW))
-#define BOILERPLATE_IS_BOILERPLATE_APPLICATION_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW))
-#define BOILERPLATE_BOILERPLATE_APPLICATION_WINDOW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), BOILERPLATE_TYPE_BOILERPLATE_APPLICATION_WINDOW, BoilerplateBoilerplateApplicationWindowClass))
+#define BOILERPLATE_TYPE_APPLICATION_WINDOW (boilerplate_application_window_get_type ())
+#define BOILERPLATE_APPLICATION_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), BOILERPLATE_TYPE_APPLICATION_WINDOW, BoilerplateApplicationWindow))
+#define BOILERPLATE_APPLICATION_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), BOILERPLATE_TYPE_APPLICATION_WINDOW, BoilerplateApplicationWindowClass))
+#define BOILERPLATE_IS_APPLICATION_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), BOILERPLATE_TYPE_APPLICATION_WINDOW))
+#define BOILERPLATE_IS_APPLICATION_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), BOILERPLATE_TYPE_APPLICATION_WINDOW))
+#define BOILERPLATE_APPLICATION_WINDOW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), BOILERPLATE_TYPE_APPLICATION_WINDOW, BoilerplateApplicationWindowClass))
 
-typedef struct _BoilerplateBoilerplateApplicationWindow BoilerplateBoilerplateApplicationWindow;
-typedef struct _BoilerplateBoilerplateApplicationWindowClass BoilerplateBoilerplateApplicationWindowClass;
+typedef struct _BoilerplateApplicationWindow BoilerplateApplicationWindow;
+typedef struct _BoilerplateApplicationWindowClass BoilerplateApplicationWindowClass;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 #define _g_free0(var) (var = (g_free (var), NULL))
 
@@ -45,7 +45,7 @@ struct _BoilerplateBoilerplateClass {
 };
 
 struct _BoilerplateBoilerplatePrivate {
-	BoilerplateBoilerplateApplicationWindow* window;
+	BoilerplateApplicationWindow* window;
 	GSettings* settings;
 };
 
@@ -54,7 +54,7 @@ static gpointer boilerplate_boilerplate_parent_class = NULL;
 
 #define BOILERPLATE_app_id "de.hannenz.boilerplate"
 GType boilerplate_boilerplate_get_type (void) G_GNUC_CONST;
-GType boilerplate_boilerplate_application_window_get_type (void) G_GNUC_CONST;
+GType boilerplate_application_window_get_type (void) G_GNUC_CONST;
 #define BOILERPLATE_BOILERPLATE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), BOILERPLATE_TYPE_BOILERPLATE, BoilerplateBoilerplatePrivate))
 enum  {
 	BOILERPLATE_BOILERPLATE_DUMMY_PROPERTY
@@ -64,8 +64,8 @@ BoilerplateBoilerplate* boilerplate_boilerplate_construct (GType object_type);
 #define CONSTANTS_GETTEXT_PACKAGE "boilerplate"
 #define CONSTANTS_DATADIR "/usr/local/share"
 static void boilerplate_boilerplate_real_activate (GApplication* base);
-BoilerplateBoilerplateApplicationWindow* boilerplate_boilerplate_application_window_new (void);
-BoilerplateBoilerplateApplicationWindow* boilerplate_boilerplate_application_window_construct (GType object_type);
+BoilerplateApplicationWindow* boilerplate_application_window_new (GtkApplication* app);
+BoilerplateApplicationWindow* boilerplate_application_window_construct (GType object_type, GtkApplication* app);
 static void boilerplate_boilerplate_finalize (GObject* obj);
 gint boilerplate_main (gchar** args, int args_length1);
 
@@ -96,9 +96,9 @@ static void boilerplate_boilerplate_real_activate (GApplication* base) {
 	const gchar* _tmp0_ = NULL;
 	const gchar* _tmp1_ = NULL;
 	GSettings* _tmp2_ = NULL;
-	BoilerplateBoilerplateApplicationWindow* _tmp3_ = NULL;
-	BoilerplateBoilerplateApplicationWindow* _tmp4_ = NULL;
-	BoilerplateBoilerplateApplicationWindow* _tmp5_ = NULL;
+	BoilerplateApplicationWindow* _tmp3_ = NULL;
+	BoilerplateApplicationWindow* _tmp4_ = NULL;
+	BoilerplateApplicationWindow* _tmp5_ = NULL;
 	GSettings* _tmp6_ = NULL;
 	gchar* _tmp7_ = NULL;
 	gchar* _tmp8_ = NULL;
@@ -109,7 +109,7 @@ static void boilerplate_boilerplate_real_activate (GApplication* base) {
 	_tmp2_ = g_settings_new (_tmp1_);
 	_g_object_unref0 (self->priv->settings);
 	self->priv->settings = _tmp2_;
-	_tmp3_ = boilerplate_boilerplate_application_window_new ();
+	_tmp3_ = boilerplate_application_window_new ((GtkApplication*) self);
 	g_object_ref_sink (_tmp3_);
 	_g_object_unref0 (self->priv->window);
 	self->priv->window = _tmp3_;
@@ -117,14 +117,14 @@ static void boilerplate_boilerplate_real_activate (GApplication* base) {
 	gtk_widget_show_all ((GtkWidget*) _tmp4_);
 	_tmp5_ = self->priv->window;
 	gtk_window_present ((GtkWindow*) _tmp5_);
-	g_debug ("Boilerplate.vala:46: %s", BOILERPLATE_app_id);
+	g_debug ("Boilerplate.vala:47: %s", BOILERPLATE_app_id);
 	_tmp6_ = self->priv->settings;
 	_tmp7_ = g_settings_get_string (_tmp6_, "foo");
 	_tmp8_ = _tmp7_;
-	g_debug ("Boilerplate.vala:47: %s", _tmp8_);
+	g_debug ("Boilerplate.vala:48: %s", _tmp8_);
 	_g_free0 (_tmp8_);
 	_tmp9_ = _ ("Hello, world");
-	g_debug ("Boilerplate.vala:48: %s", _tmp9_);
+	g_debug ("Boilerplate.vala:49: %s", _tmp9_);
 }
 
 
