@@ -24,6 +24,7 @@ use_gresource: boilerplate_gresource_xml
 
 *po: po
 
+*translate: glade data/gtk/menus.ui
 *translate: glade data/interface/boilerplate_window.ui
 *translate: vala src/ApplicationWindow.vala
 *translate: vala src/Boilerplate.vala

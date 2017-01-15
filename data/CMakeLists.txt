@@ -5,7 +5,7 @@ EXECUTE_PROCESS( COMMAND glib-compile-resources --sourcedir=${CMAKE_CURRENT_SOUR
 EXECUTE_PROCESS( COMMAND glib-compile-resources --sourcedir=${CMAKE_CURRENT_SOURCE_DIR} --generate-header --target=${CMAKE_CURRENT_BINARY_DIR}/boilerplate.gresource.xml.h ${CMAKE_CURRENT_SOURCE_DIR}/boilerplate.gresource.xml)
 ADD_CUSTOM_COMMAND (
 	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/boilerplate.gresource.xml.c
-	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/boilerplate.gresource.xml ${CMAKE_CURRENT_SOURCE_DIR}/interface/boilerplate_window.ui
+	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/boilerplate.gresource.xml ${CMAKE_CURRENT_SOURCE_DIR}/interface/boilerplate_window.ui ${CMAKE_CURRENT_SOURCE_DIR}/gtk/menus.ui
 	COMMAND glib-compile-resources --sourcedir=${CMAKE_CURRENT_SOURCE_DIR} --generate-source --target=${CMAKE_CURRENT_BINARY_DIR}/boilerplate.gresource.xml.c ${CMAKE_CURRENT_SOURCE_DIR}/boilerplate.gresource.xml
 
 	COMMAND glib-compile-resources --sourcedir=${CMAKE_CURRENT_SOURCE_DIR} --generate-header --target=${CMAKE_CURRENT_BINARY_DIR}/boilerplate.gresource.xml.h ${CMAKE_CURRENT_SOURCE_DIR}/boilerplate.gresource.xml

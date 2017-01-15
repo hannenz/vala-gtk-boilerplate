@@ -21,7 +21,7 @@
 
 				<child>
 					<object class="GtkLabel">
-						<property name="label">Hello, Boilerplate!</property>
+						<property translatable="yes" name="label">Hello, Boilerplate!</property>
 					</object>
 					<packing>
 						<property name="pack-type">start</property>

@@ -63,11 +63,16 @@ BoilerplateBoilerplate* boilerplate_boilerplate_new (void);
 BoilerplateBoilerplate* boilerplate_boilerplate_construct (GType object_type);
 #define CONSTANTS_GETTEXT_PACKAGE "boilerplate"
 #define CONSTANTS_DATADIR "/usr/local/share"
+static void boilerplate_boilerplate_add_actions (BoilerplateBoilerplate* self);
+static void __lambda4_ (BoilerplateBoilerplate* self);
+static void ___lambda4__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
 static void boilerplate_boilerplate_real_activate (GApplication* base);
 BoilerplateApplicationWindow* boilerplate_application_window_new (GtkApplication* app);
 BoilerplateApplicationWindow* boilerplate_application_window_construct (GType object_type, GtkApplication* app);
 static void boilerplate_boilerplate_finalize (GObject* obj);
 gint boilerplate_main (gchar** args, int args_length1);
+static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func);
+static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func);
 
 
 BoilerplateBoilerplate* boilerplate_boilerplate_construct (GType object_type) {
@@ -82,12 +87,47 @@ BoilerplateBoilerplate* boilerplate_boilerplate_construct (GType object_type) {
 	setlocale (LC_ALL, "");
 	textdomain (CONSTANTS_GETTEXT_PACKAGE);
 	bind_textdomain_codeset (CONSTANTS_GETTEXT_PACKAGE, "utf-8");
+	boilerplate_boilerplate_add_actions (self);
 	return self;
 }
 
 
 BoilerplateBoilerplate* boilerplate_boilerplate_new (void) {
 	return boilerplate_boilerplate_construct (BOILERPLATE_TYPE_BOILERPLATE);
+}
+
+
+static void __lambda4_ (BoilerplateBoilerplate* self) {
+	g_debug ("Boilerplate.vala:47: Quit action has been activated");
+	gtk_main_quit ();
+}
+
+
+static void ___lambda4__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+	__lambda4_ ((BoilerplateBoilerplate*) self);
+}
+
+
+static void boilerplate_boilerplate_add_actions (BoilerplateBoilerplate* self) {
+	GSimpleAction* action = NULL;
+	GSimpleAction* _tmp0_ = NULL;
+	gchar* _tmp1_ = NULL;
+	gchar** _tmp2_ = NULL;
+	gchar** _tmp3_ = NULL;
+	gint _tmp3__length1 = 0;
+	g_return_if_fail (self != NULL);
+	_tmp0_ = g_simple_action_new ("quit-action", NULL);
+	action = _tmp0_;
+	_tmp1_ = g_strdup ("<Control>q");
+	_tmp2_ = g_new0 (gchar*, 1 + 1);
+	_tmp2_[0] = _tmp1_;
+	_tmp3_ = _tmp2_;
+	_tmp3__length1 = 1;
+	gtk_application_set_accels_for_action ((GtkApplication*) self, "app.quit-action", _tmp3_);
+	_tmp3_ = (_vala_array_free (_tmp3_, _tmp3__length1, (GDestroyNotify) g_free), NULL);
+	g_signal_connect_object (action, "activate", (GCallback) ___lambda4__g_simple_action_activate, self, 0);
+	g_action_map_add_action ((GActionMap*) self, (GAction*) action);
+	_g_object_unref0 (action);
 }
 
 
@@ -117,14 +157,14 @@ static void boilerplate_boilerplate_real_activate (GApplication* base) {
 	gtk_widget_show_all ((GtkWidget*) _tmp4_);
 	_tmp5_ = self->priv->window;
 	gtk_window_present ((GtkWindow*) _tmp5_);
-	g_debug ("Boilerplate.vala:47: %s", BOILERPLATE_app_id);
+	g_debug ("Boilerplate.vala:60: %s", BOILERPLATE_app_id);
 	_tmp6_ = self->priv->settings;
 	_tmp7_ = g_settings_get_string (_tmp6_, "foo");
 	_tmp8_ = _tmp7_;
-	g_debug ("Boilerplate.vala:48: %s", _tmp8_);
+	g_debug ("Boilerplate.vala:61: %s", _tmp8_);
 	_g_free0 (_tmp8_);
 	_tmp9_ = _ ("Hello, world");
-	g_debug ("Boilerplate.vala:49: %s", _tmp9_);
+	g_debug ("Boilerplate.vala:62: %s", _tmp9_);
 }
 
 
@@ -185,6 +225,24 @@ int main (int argc, char ** argv) {
 	g_type_init ();
 #endif
 	return boilerplate_main (argv, argc);
+}
+
+
+static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
+	if ((array != NULL) && (destroy_func != NULL)) {
+		int i;
+		for (i = 0; i < array_length; i = i + 1) {
+			if (((gpointer*) array)[i] != NULL) {
+				destroy_func (((gpointer*) array)[i]);
+			}
+		}
+	}
+}
+
+
+static void _vala_array_free (gpointer array, gint array_length, GDestroyNotify destroy_func) {
+	_vala_array_destroy (array, array_length, destroy_func);
+	g_free (array);
 }
 
 

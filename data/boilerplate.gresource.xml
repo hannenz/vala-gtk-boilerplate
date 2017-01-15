@@ -2,6 +2,9 @@
 <gresources>
 	<gresource prefix="/de/hannenz/boilerplate">
 		<file>interface/boilerplate_window.ui</file>
+		
+		<!-- menus will be taken automatically by Gtk.Application from resource at this path -->
+		<file>gtk/menus.ui</file>
 	</gresource>
 </gresources>
 

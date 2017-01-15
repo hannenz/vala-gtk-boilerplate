@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-10 23:28+0100\n"
+"POT-Creation-Date: 2017-01-14 09:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hannenz/software_projects/boilerplate/po/../src/Boilerplate.vala:48
+#: /home/hannenz/software_projects/boilerplate/po/../src/Boilerplate.vala:49
 msgid "Hello, world"
+msgstr ""
+
+#: /home/hannenz/software_projects/boilerplate/po/../data/gtk/menus.ui:5
+msgid "_Preferences"
+msgstr ""
+
+#: /home/hannenz/software_projects/boilerplate/po/../data/gtk/menus.ui:11
+msgid "_Quit"
 msgstr ""
 
 #: /home/hannenz/software_projects/boilerplate/po/../data/interface/boilerplate_window.ui:6
 msgid "Boilerplate"
+msgstr ""
+
+#: /home/hannenz/software_projects/boilerplate/po/../data/interface/boilerplate_window.ui:24
+msgid "Hello, Boilerplate!"
 msgstr ""

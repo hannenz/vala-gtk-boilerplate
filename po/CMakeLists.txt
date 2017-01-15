@@ -3,4 +3,4 @@
 
 include (Translations)
 add_translations_directory("boilerplate")
-add_translations_catalog("boilerplate" ../src ../data/interface )
+add_translations_catalog("boilerplate" ../src ../data/gtk ../data/interface )

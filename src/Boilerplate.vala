@@ -35,6 +35,19 @@ namespace Boilerplate {
 			Intl.setlocale (LocaleCategory.ALL, "");
 			Intl.textdomain(Constants.GETTEXT_PACKAGE);
 			Intl.bind_textdomain_codeset(Constants.GETTEXT_PACKAGE, "utf-8" );
+
+			add_actions();
+		}
+
+		private void add_actions() {
+			// Set-Up actions
+			var action = new GLib.SimpleAction("quit-action", null);
+			set_accels_for_action("app.quit-action", { "<Control>q" });
+			action.activate.connect( () => {
+				debug ("Quit action has been activated");
+				Gtk.main_quit();
+			});
+			this.add_action(action);
 		}
 
 		protected override void activate() {
