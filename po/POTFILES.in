@@ -1,4 +1,5 @@
 src/ApplicationWindow.vala
 src/Boilerplate.vala
+src/Overlay.vala
 data/gtk/menus.ui
 data/interface/boilerplate_window.ui

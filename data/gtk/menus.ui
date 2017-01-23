@@ -4,6 +4,7 @@
 			<item> 
 				<attribute name="label" translatable="yes">_Preferences</attribute>
 				<attribute name="action">app.preferences</attribute>
+				<attribute name="icon">document-save</attribute>
 			</item>
 		</section>
 		<section>

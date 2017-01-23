@@ -12,14 +12,18 @@ use_gresource: boilerplate_gresource_xml
 *vala_check_package: cairo
 *vala_check_package: gdk-3.0
 *vala_check_package: gdk-pixbuf-2.0
+*vala_check_package: gee-0.8
 *vala_check_package: gio-2.0
+*vala_check_package: gio-unix-2.0
 *vala_check_package: glib-2.0
 *vala_check_package: gobject-2.0
+*vala_check_package: granite
 *vala_check_package: gtk+-3.0
 *vala_check_package: pango
 *vala_check_package: x11
 *vala_source: ApplicationWindow.vala
 *vala_source: Boilerplate.vala
+*vala_source: Overlay.vala
 
 
 *po: po
@@ -28,6 +32,7 @@ use_gresource: boilerplate_gresource_xml
 *translate: glade data/interface/boilerplate_window.ui
 *translate: vala src/ApplicationWindow.vala
 *translate: vala src/Boilerplate.vala
+*translate: vala src/Overlay.vala
 
 *data: data/local
 

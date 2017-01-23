@@ -3,31 +3,32 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-22 09:50+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2017-01-20 17:28+0100\n"
+"PO-Revision-Date: 2017-01-20 21:12+0100\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
 
-#: src/Boilerplate.vala:64
+#: src/Boilerplate.vala:62
 msgid "Hello, world"
-msgstr ""
+msgstr "Hallo, Welt!"
 
 #: data/gtk/menus.ui:5
 msgid "_Preferences"
-msgstr ""
+msgstr "_Einstellungen"
 
 #: data/gtk/menus.ui:11
 msgid "_Quit"
-msgstr ""
+msgstr "_Beenden"
 
 #: data/interface/boilerplate_window.ui:6
 msgid "Boilerplate"
@@ -35,4 +36,4 @@ msgstr ""
 
 #: data/interface/boilerplate_window.ui:24
 msgid "Hello, Boilerplate!"
-msgstr ""
+msgstr "Willkommen bei Boilerplate!"

@@ -31,7 +31,9 @@ namespace Boilerplate {
 			);
 
 			// Setup I18n 
-			Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, Path.build_filename(Constants.DATADIR,"locale"));
+			/* debug(Path.build_filename(Constants.DATADIR, "locale"));  */
+			Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, Path.build_filename(Constants.DATADIR, "locale"));
+			/* Intl.bindtextdomain(Constants.GETTEXT_PACKAGE, "/home/hannenz/software_projects/boilerplate/locale"); */
 			Intl.setlocale (LocaleCategory.ALL, "");
 			Intl.textdomain(Constants.GETTEXT_PACKAGE);
 			Intl.bind_textdomain_codeset(Constants.GETTEXT_PACKAGE, "utf-8" );
@@ -44,8 +46,8 @@ namespace Boilerplate {
 			var action = new GLib.SimpleAction("quit-action", null);
 			set_accels_for_action("app.quit-action", { "<Control>q" });
 			action.activate.connect( () => {
-				debug ("Quit action has been activated");
-				Gtk.main_quit();
+				// Quit application 
+				quit();
 			});
 			this.add_action(action);
 		}
